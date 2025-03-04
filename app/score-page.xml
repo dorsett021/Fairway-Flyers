@@ -1,0 +1,27 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="Score Card" class="bg-green-700 text-white">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="{{ onBackButtonTap }}" />
+    </ActionBar>
+
+    <StackLayout class="bg-green-100 p-4">
+        <Label text="Hole Complete!" class="text-3xl font-bold text-green-800 text-center p-4" />
+        
+        <GridLayout rows="auto, auto" columns="*, *" class="bg-white rounded-lg p-4 m-4">
+            <Label row="0" col="0" text="Hole" class="text-lg font-bold" />
+            <Label row="0" col="1" text="1" class="text-lg text-right" />
+            
+            <Label row="1" col="0" text="Par" class="text-lg font-bold" />
+            <Label row="1" col="1" text="3" class="text-lg text-right" />
+        </GridLayout>
+        
+        <GridLayout rows="auto" columns="*, *" class="bg-white rounded-lg p-4 m-4">
+            <Label col="0" text="Your Score" class="text-xl font-bold" />
+            <Label col="1" text="{{ throws }}" class="text-xl text-right {{ throws <= 3 ? 'text-green-600' : 'text-red-600' }}" />
+        </GridLayout>
+        
+        <Label text="{{ scoreMessage }}" class="text-lg text-center p-4" textWrap="true" />
+        
+        <Button text="PLAY AGAIN" tap="{{ onPlayAgain }}" class="bg-green-600 text-white text-lg font-bold p-4 m-4 rounded-lg" />
+        <Button text="MAIN MENU" tap="{{ onMainMenu }}" class="bg-blue-500 text-white text-lg p-3 m-4 rounded-lg" />
+    </StackLayout>
+</Page>

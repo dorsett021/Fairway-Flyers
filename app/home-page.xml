@@ -1,0 +1,21 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="Fairway Flyers" class="bg-green-700 text-white" />
+
+    <GridLayout rows="auto, *, auto" class="bg-green-100 p-4">
+        <!-- Game Title -->
+        <StackLayout row="0" class="text-center p-4">
+            <Label text="Fairway Flyers" class="text-4xl font-bold text-green-800" />
+            <Label text="Frisbee Golf" class="text-2xl text-green-600" />
+        </StackLayout>
+
+        <!-- Menu Options -->
+        <StackLayout row="1" class="text-center p-4">
+            <Button text="START GAME" tap="onStartGame" class="bg-green-600 text-white text-lg font-bold p-4 m-4 rounded-lg" />
+            <Button text="HOW TO PLAY" tap="{{ onHowToPlay }}" class="bg-blue-500 text-white text-lg p-3 m-4 rounded-lg" />
+            <Button text="SETTINGS" tap="{{ onSettings }}" class="bg-gray-500 text-white text-lg p-3 m-4 rounded-lg" />
+        </StackLayout>
+
+        <!-- Footer -->
+        <Label row="2" text="© 2025 Fairway Flyers" class="text-center text-gray-500 p-2" />
+    </GridLayout>
+</Page>

@@ -1,0 +1,41 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="Hole 1" class="bg-green-700 text-white">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="{{ onBackButtonTap }}" />
+        <ActionItem ios.position="right" android.position="actionBar" tap="{{ resetHole }}">
+            <Label text="Reset" class="text-white p-2" />
+        </ActionItem>
+    </ActionBar>
+
+    <GridLayout rows="*, auto">
+        <!-- Game Area -->
+        <GridLayout row="0" id="gameArea" touch="onTouch" class="bg-green-200">
+            <!-- Player Position -->
+            <StackLayout id="player" class="bg-blue-500 rounded-full h-12 w-12" horizontalAlignment="left" verticalAlignment="bottom" marginLeft="{{ playerX }}" marginBottom="{{ playerY }}">
+            </StackLayout>
+            
+            <!-- Target/Basket -->
+            <StackLayout id="basket" class="bg-yellow-500 rounded-full h-16 w-16" horizontalAlignment="right" verticalAlignment="top" marginRight="30" marginTop="30">
+                <Label text="🧺" class="text-center text-2xl" verticalAlignment="middle" />
+            </StackLayout>
+            
+            <!-- Aim Line (visible when aiming) -->
+            <GridLayout id="aimLine" class="bg-red-500" height="2" width="{{ aimLineLength }}" horizontalAlignment="left" verticalAlignment="bottom" marginLeft="{{ playerX }}" marginBottom="{{ playerY }}" rotate="{{ aimAngle }}" visibility="{{ isAiming ? 'visible' : 'collapsed' }}">
+            </GridLayout>
+            
+            <!-- Power Meter -->
+            <GridLayout rows="*" columns="auto, *" class="bg-white rounded p-2" horizontalAlignment="left" verticalAlignment="top" marginLeft="10" marginTop="10" visibility="{{ isAiming ? 'visible' : 'collapsed' }}">
+                <Label col="0" text="Power: " class="text-black" />
+                <GridLayout col="1" class="bg-gray-300 rounded" height="20" width="100">
+                    <GridLayout class="bg-red-500 rounded" height="100%" width="{{ powerPercent }}%" horizontalAlignment="left" />
+                </GridLayout>
+            </GridLayout>
+        </GridLayout>
+        
+        <!-- Game Info Panel -->
+        <GridLayout row="1" rows="auto" columns="*, *, *" class="bg-white p-4">
+            <Label col="0" text="Throws: {{ throws }}" class="text-lg text-center" />
+            <Label col="1" text="Par: 3" class="text-lg text-center" />
+            <Label col="2" text="Distance: {{ distanceToBasket }}m" class="text-lg text-center" />
+        </GridLayout>
+    </GridLayout>
+</Page>
